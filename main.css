@@ -1,29 +1,38 @@
+/*GLOBAL STYLES*/
+html{
+    background-color: aliceblue;
+}
+
 /*TITLE STYLES*/
 .header{
-    width: 20vw;
+    width: 25vw;
     margin: auto;
     text-align: center;
+    font-size: 1.5em;
 }
+
+
+/*CALCULATOR STYLES*/
 .calculatorBox{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     width: 25%;
     height: 750px;
-    background-color: rgb(164, 168, 172);
+    background-color: rgb(97, 162, 228);
     margin: auto;
     margin-top: 3vw;
 }
 .calculatorBox div{
     width: 12%;
     margin: 2%;
-    font-size: 2.5vw;
+    font-size: 2.1vw;
     line-height: 100px;
     padding: 2%;
-    background: white;
+    background: rgb(196, 195, 195);
 
 }
-.calculatorBox div:hover{
+.number:hover{
     background-color: aquamarine;
 }
 .calculatorBox .screen{
@@ -33,12 +42,31 @@
     margin-bottom: 0%;
     background-color: beige;
     text-align: right;
+    margin-top: 0
+}
+.calculatorBox .topScreen{
+    line-height: 20px;
+    min-height: 20px;
+    margin: 3%;
+    margin-bottom: 0;
+    margin-right: 2%;
+    text-align: right;
+    width: 85%;
+    font-size: 1em;
+    padding: 1px;
+    padding-bottom: 0;
+    background-color: rgba(245, 245, 220, 0.788);
+    
 }
 
 .calculatorBox .operator{
     text-align: center;
     vertical-align: middle;
     line-height: 100px;
+    background-color: antiquewhite;
+    }
+    .operator:hover{
+        background-color: rgb(179, 208, 235);
     }
 .calculatorBox .zero{
     width: 20%;
