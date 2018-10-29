@@ -65,10 +65,8 @@ function pressOperate(){
         operator = "";
         topScreen.textContent = ""
     }
-    else if(topScreen.textContent == "" || operatorEnteredLast == true){
-        return;
-    }
-    else if (this.innerHTML == "clear"){
+    
+    else if (this.innerHTML == "Clear"){
         screen.textContent = ""
         operatorEntered = false;
         num1 = 0;
@@ -76,6 +74,16 @@ function pressOperate(){
         screenInput = "";
         operator = "";
         topScreen.textContent = "";
+    }
+    else if(topScreen.textContent == "" || operatorEnteredLast == true){
+        return;
+    }
+    else if (this.innerHTML == "Del"){
+        screen.textContent= screen.textContent.substring(0,screen.textContent.length - 1);
+        if(topScreen.textContent[topScreen.textContent.length - 1].match(/\d/) != null){
+            topScreen.textContent= topScreen.textContent.substring(0,topScreen.textContent.length - 1);
+            screenInput = screenInput.substring(0,screenInput.length-1);
+        }
     }
     else if (operatorEntered == true || num1 !=0){
         num2=+screenInput;
@@ -100,7 +108,9 @@ function pressOperate(){
         operatorEntered = true;
         topScreen.textContent += this.innerHTML;
     }
-    operatorEnteredLast = true;
+    if (this.innerHTML != "Del" ){
+        operatorEnteredLast = true;
+    }
 }
     
 
