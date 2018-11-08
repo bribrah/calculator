@@ -78,6 +78,14 @@ function pressOperate(){
         topScreen.textContent = "";
     }
     //if an operator was last entered you can change that operator 
+    else if (this.innerHTML == "Del"){
+        if (operatorEnteredLast != true)
+            screen.textContent= screen.textContent.substring(0,screen.textContent.length - 1);
+        if(topScreen.textContent[topScreen.textContent.length - 1].match(/\d/) != null && operatorEnteredLast != true){
+            topScreen.textContent= topScreen.textContent.substring(0,topScreen.textContent.length - 1);
+            screenInput = screenInput.substring(0,screenInput.length-1);
+        }
+    }
     else if(operatorEnteredLast == true){
         operator = this.innerHTML;
         topScreen.textContent = topScreen.textContent.substring(0,topScreen.textContent.length - 1);
@@ -89,13 +97,7 @@ function pressOperate(){
     }
 
     //del deletes last number of top and bottom screen and does not delete operators from top screen
-    else if (this.innerHTML == "Del"){
-        screen.textContent= screen.textContent.substring(0,screen.textContent.length - 1);
-        if(topScreen.textContent[topScreen.textContent.length - 1].match(/\d/) != null){
-            topScreen.textContent= topScreen.textContent.substring(0,topScreen.textContent.length - 1);
-            screenInput = screenInput.substring(0,screenInput.length-1);
-        }
-    }
+    
 
     //operates and returns result if num 1 has been entered, makes nm1 = top result so another operation can be performed on it
     else if (operatorEntered == true || num1 !=0){
