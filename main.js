@@ -86,16 +86,16 @@ function pressOperate(){
             screenInput = screenInput.substring(0,screenInput.length-1);
         }
     }
-    else if(operatorEnteredLast == true){
-        operator = this.innerHTML;
-        topScreen.textContent = topScreen.textContent.substring(0,topScreen.textContent.length - 1);
-        topScreen.textContent += operator
-    }
+    
     //if nothing has been entered yet, you can not enter an operator
     else if(topScreen.textContent == ""){
         return;
     }
-
+    else if(operatorEnteredLast == true){
+            operator = this.innerHTML;
+            topScreen.textContent = topScreen.textContent.substring(0,topScreen.textContent.length - 1);
+            topScreen.textContent += operator
+        }
     //del deletes last number of top and bottom screen and does not delete operators from top screen
     
 
