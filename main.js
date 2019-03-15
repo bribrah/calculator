@@ -26,9 +26,9 @@ let topScreen = document.querySelector(".topScreen");
 let screenInput = 0;
 
 function inputNumber(){
-    if (result != 0){
-        result = 0
-        screen.textContent = ""
+    if (result != null){
+        result = null;
+        screen.textContent = "";
     }
     screen.textContent += this.innerHTML;
     topScreen.textContent += this.innerHTML;
@@ -39,7 +39,7 @@ function inputNumber(){
 
 let num1 = 0;
 let num2 = 0;
-let result = 0;
+let result = null;
 let operator = ""
 let operatorEntered = false;
 let operatorEnteredLast = false;
@@ -47,7 +47,7 @@ function pressOperate(){
     if (this.innerHTML == "="){
         if (operatorEntered == true){
             num2 = +screenInput;
-            result = operate(num1,num2,operator)          
+            result = operate(num1,num2,operator);
         }
         else{
             result = screen.textContent;
@@ -63,11 +63,11 @@ function pressOperate(){
         num2 = 0;
         screenInput = "";
         operator = "";
-        topScreen.textContent = ""
+        topScreen.textContent = "";
     }
     
     else if (this.innerHTML == "Clear"){
-        screen.textContent = ""
+        screen.textContent = "";
         operatorEntered = false;
         num1 = 0;
         num2 = 0;
