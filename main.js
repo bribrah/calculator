@@ -44,6 +44,7 @@ let operator = ""
 let operatorEntered = false;
 let operatorEnteredLast = false;
 function pressOperate(){
+    //Equal operator clears all values and shows result
     if (this.innerHTML == "="){
         if (operatorEntered == true){
             num2 = +screenInput;
@@ -66,6 +67,7 @@ function pressOperate(){
         topScreen.textContent = "";
     }
     
+    //Clear operator clears all values
     else if (this.innerHTML == "Clear"){
         screen.textContent = "";
         operatorEntered = false;
@@ -75,16 +77,29 @@ function pressOperate(){
         operator = "";
         topScreen.textContent = "";
     }
-    else if(topScreen.textContent == "" || operatorEnteredLast == true){
-        return;
-    }
+    //if an operator was last entered you can change that operator 
     else if (this.innerHTML == "Del"){
-        screen.textContent= screen.textContent.substring(0,screen.textContent.length - 1);
-        if(topScreen.textContent[topScreen.textContent.length - 1].match(/\d/) != null){
+        if (operatorEnteredLast != true)
+            screen.textContent= screen.textContent.substring(0,screen.textContent.length - 1);
+        if(topScreen.textContent[topScreen.textContent.length - 1].match(/\d/) != null && operatorEnteredLast != true){
             topScreen.textContent= topScreen.textContent.substring(0,topScreen.textContent.length - 1);
             screenInput = screenInput.substring(0,screenInput.length-1);
         }
     }
+    
+    //if nothing has been entered yet, you can not enter an operator
+    else if(topScreen.textContent == ""){
+        return;
+    }
+    else if(operatorEnteredLast == true){
+            operator = this.innerHTML;
+            topScreen.textContent = topScreen.textContent.substring(0,topScreen.textContent.length - 1);
+            topScreen.textContent += operator
+        }
+    //del deletes last number of top and bottom screen and does not delete operators from top screen
+    
+
+    //operates and returns result if num 1 has been entered, makes nm1 = top result so another operation can be performed on it
     else if (operatorEntered == true || num1 !=0){
         num2=+screenInput;
         console.log("num1:" + num1);
@@ -108,6 +123,7 @@ function pressOperate(){
         operatorEntered = true;
         topScreen.textContent += this.innerHTML;
     }
+    //detects if an operator other than del was pressed last.
     if (this.innerHTML != "Del" ){
         operatorEnteredLast = true;
     }
