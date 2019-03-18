@@ -28,6 +28,7 @@ html{
     margin: auto;
     margin-top: 3vw;
     box-shadow: 5px 5px grey;
+    min-height: 99vmin;
 }
 .calculator div{
     width: 12%;
